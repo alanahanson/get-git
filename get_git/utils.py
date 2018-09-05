@@ -1,20 +1,14 @@
 import requests
 
 
-class RequestException(Exception):
-    pass
-
-def make_request(url, method, token=None, data=None):
-    headers = {}
-
+def make_request(url, method='get', token=None, data=None):
     if method.lower() == 'get':
         response = requests.get(url)
     elif method.lower() == 'post':
-        headers['Authorization'] = f'{token}'
         response = requests.post(
             url,
             json={'query': data},
-            headers=headers
+            headers={'Authorization': f'token {token}'}
         )
     else:
         return {'error': f'method {method} not allowed.'}
@@ -23,3 +17,7 @@ def make_request(url, method, token=None, data=None):
         return response.json()
     else:
         raise RequestException(f'Request to {url} failed with status code {response.status_code}.')
+
+
+class RequestException(Exception):
+    pass

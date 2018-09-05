@@ -1,41 +1,17 @@
 # get_git
-Get user information from Github and Bitbucket profiles
+Get merged user information from Github and Bitbucket profiles
 
-## TO RUN
+## To run the app
 
-have docker installed
-run the runner in your terminal (./runner)
+Prerequisites:
+- have Docker installed
+- export relevant env variables to your environment (GH_API_TOKEN, PYTHONPATH)
 
+Run the runner file in your terminal with `./runner`
 
-## TO RUN TESTS
+Go to `http://localhost:4000/user?github=kennethreitz&bitbucket=mailchimp` for a JSON response
 
-install pip, install pytest, run tests
+## To run tests
+- `Pip install pytest`
+- `pytest tests/`
 
-
-GH
-The user profile should include following information (when avaialble):
-total number of public repos (seperate by original repos vs forked repos)
-- GET /users/:username/repos
-total watcher/follower count
-total number of stars recieved
-total number of stars given
-  - GET /users/:username/starred (array)
-total number of open issues
-total number of commits to their repos (not forks)
-total size of their accounts
-a list/count of langagues used
-a list/count of repo topics
-
-
-
-BB
-The user profile should include following information (when avaialble):
-total number of public repos (seperate by original repos vs forked repos)
-total watcher/follower count
-total number of stars recieved
-total number of stars given
-total number of open issues
-total number of commits to their repos (not forks)
-total size of their accounts
-a list/count of langagues used
-a list/count of repo topics

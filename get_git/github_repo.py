@@ -2,7 +2,6 @@ class GithubRepo:
     def __init__(self, data):
         self.data = data
         self.is_fork = data.get('isFork')
-        self.language = data.get('primaryLanguage')
 
     @property
     def watcher_count(self):
@@ -22,4 +21,10 @@ class GithubRepo:
 
     @property
     def topics(self):
-        return [node['topic']['name'] for node in self.data['respositoryTopics']['nodes']]
+        return [node['topic']['name'] for node in self.data['repositoryTopics']['nodes']]
+
+    @property
+    def language(self):
+        l = self.data.get('primaryLanguage')
+        return l.get('name') if l else ''
+

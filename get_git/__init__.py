@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 
-from user_profile import UserProfile
+from get_git.user_profile import UserProfile
 
 
 app = Flask(__name__)
@@ -14,7 +14,6 @@ def show_user_profile():
     user = UserProfile(data)
     response = jsonify(user.merged_profile)
     response.status_code = 200
-    # what happens if one or both names don't exist?
     return response
 
 

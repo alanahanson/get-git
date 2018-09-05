@@ -1,14 +1,15 @@
 from get_git.github_client import GithubClient
-
 from get_git.github_repo import GithubRepo
+
 
 class GithubProfile:
     def __init__(self, username):
-        self.data = self._get_data(username)
+        self.username = username
+        self.data = self._get_data()
         self.repos = self._get_repos()
 
-    def _get_data(self, username):
-        return GithubClient(username).get_data()
+    def _get_data(self):
+        return GithubClient(self.username).get_data()
 
     def _get_repos(self):
         return [GithubRepo(node) for node in self.data['repositories']['nodes']]
@@ -23,13 +24,13 @@ class GithubProfile:
         self.data['repositories']['totalCount']
 
     def total_forks(self):
-        return len(r for r in self.repos if r.is_fork)
+        return len([r for r in self.repos if r.is_fork])
 
     def total_followers(self):
         return self.data['followers']['totalCount']
 
     def languages_used(self):
-        return {r.language for r in self.repos}
+        return [r.language for r in self.repos]
 
     def languages_count(self):
         return len(self.languages_used())
@@ -40,14 +41,10 @@ class GithubProfile:
         return sum([r.commits_count for r in self.repos])
 
     def repo_topics(self):
-        return [r.topics for r in self.repos]
+        return [r.topics for r in self.repos if r.topics]
 
     def stars_given(self):
         return self.data['starredRepositories']['totalCount']
 
     def stars_received(self):
         return sum([r.stars_count for r in self.repos])
-
-
-profile = GithubProfile('octocat')
-print(profile.stars_received())
