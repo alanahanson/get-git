@@ -13,8 +13,8 @@ EXPOSE 80
 
 
 # Run app.py when the container launches
-ENV FLASK_APP=get_git/app.py
-CMD ["python", "get_git/app.py"]
+ENV PYTHONPATH=.
+CMD ["python", "get_git"]
 
 
 # Pass env variables with -e when doing docker run

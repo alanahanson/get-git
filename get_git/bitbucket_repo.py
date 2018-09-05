@@ -1,15 +1,5 @@
-#     'has_issues': False,
-#     'links': {
-#                  'commits': {   'href': 'https://api.bitbucket.org/2.0/repositories/bitbucket/django-piston/commits'},
-#                  'watchers': {   'href': 'https://api.bitbucket.org/2.0/repositories/bitbucket/django-piston/watchers'}},
-#     'name': 'django-piston',
+from utils.make_request import make_request
 
-def make_request(url, token):
-    response = requests.get(url)
-    if response.status_code == 200:
-        return response.json()
-    else:
-        raise RequestException(f'Request to {url} failed with status code {response.status_code}.')
 
 class BitbucketRepo:
     def __init__(self, data):
@@ -34,6 +24,7 @@ class BitbucketRepo:
 
     @property
     def issues_count(self):
+        # TODO: update this - inaccurate data/inconsistent response
         if data.get('has_issues'):
             try:
                 resp = make_request(self.data['links']['issues']['href'])
