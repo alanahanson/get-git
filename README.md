@@ -1,6 +1,17 @@
 # get_git
 Get user information from Github and Bitbucket profiles
 
+## TO RUN
+
+have docker installed
+run the runner in your terminal (./runner)
+
+
+## TO RUN TESTS
+
+install pip, install pytest, run tests
+
+
 GH
 The user profile should include following information (when avaialble):
 total number of public repos (seperate by original repos vs forked repos)
