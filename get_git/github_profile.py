@@ -21,7 +21,7 @@ class GithubProfile:
         return sum([r.issues_count for r in self.repos])
 
     def total_repos(self):
-        self.data['repositories']['totalCount']
+        return self.data['repositories']['totalCount']
 
     def total_forks(self):
         return len([r for r in self.repos if r.is_fork])
@@ -32,11 +32,9 @@ class GithubProfile:
     def languages_used(self):
         return [r.language for r in self.repos]
 
-    def languages_count(self):
-        return len(self.languages_used())
-
     def account_size(self):
         return self.data['repositories']['totalDiskUsage']
+
     def total_commits(self):
         return sum([r.commits_count for r in self.repos])
 

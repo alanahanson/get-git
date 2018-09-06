@@ -27,7 +27,6 @@ class BitbucketProfile:
         return len([r for r in self.repos if r.is_fork])
 
     def total_followers(self):
-        # not available for team accounts in version 2.0
         return None
 
     def languages_used(self):

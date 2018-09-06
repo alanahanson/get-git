@@ -13,9 +13,7 @@ class GithubClient:
         query =  """
           {user(login:"%s") {
               starredRepositories { totalCount }
-              watching { totalCount }
               followers { totalCount }
-              following { totalCount }
               repositories(first:100) {
                   totalDiskUsage
                   totalCount
@@ -57,11 +55,7 @@ class GithubClient:
                   id
                   name
                   isFork
-                  languages(first:100) {
-                    totalCount
-                    pageInfo { hasNextPage, endCursor }
-                    nodes { name }
-                  }
+                  primaryLanguage { name }
                   issues(states:OPEN) { totalCount }
                   commitComments { totalCount }
                   watchers { totalCount }
