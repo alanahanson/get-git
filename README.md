@@ -9,9 +9,9 @@ Prerequisites:
 
 Run the runner file in your terminal with `./runner`
 
-Go to `http://localhost:4000/user?github=kennethreitz&bitbucket=mailchimp` for a JSON response
+Go to `http://localhost:4000/user?github={username}&bitbucket={username}` for a JSON response
 
 ## To run tests
-- `Pip install pytest`
+- `pip install pytest`
 - `pytest tests/`
 
